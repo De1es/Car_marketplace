@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -22,7 +23,7 @@ public class LotRestController {
   }
 
   @PostMapping("/")
-  public Lot createOrUpdateLot(@RequestBody Lot lot) {
+  public Lot createOrUpdateLot(@RequestBody @Valid Lot lot) {
     return lotService.saveOrUpdateLot(lot);
   }
 
