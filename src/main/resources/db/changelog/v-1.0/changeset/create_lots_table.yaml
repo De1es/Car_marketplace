@@ -1,0 +1,75 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_lots_table
+      author: andrei_delesevich
+      changes:
+        - createTable:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+
+              - column:
+                  name: l_seller_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_l_seller_id
+                    references: users(u_id)
+
+              - column:
+                  name: l_vehicle_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_l_vehicle_id
+                    references: vehicles(v_id)
+
+              - column:
+                  name: l_title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: l_description
+                  type: varchar(5000)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: l_manufacture_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: l_price
+                  type: int
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: l_date_of_sale
+                  type: timestamp
+
+        - createIndex:
+            indexName: l_manuf_date_idx
+            tableName: lots
+            column:
+              name: l_manufacture_date
+
+        - createIndex:
+            indexName: l_price_idx
+            tableName: lots
+            column:
+              name: l_price
+
+      rollback:
+        - dropTable:
+            tableName: lots
+

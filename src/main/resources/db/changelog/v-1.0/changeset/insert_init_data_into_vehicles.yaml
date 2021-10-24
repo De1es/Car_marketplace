@@ -1,0 +1,105 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_users_table
+      author: andrei_delesevich
+      changes:
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Honda
+              - column:
+                  name: v_model
+                  value: Accord
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Honda
+              - column:
+                  name: v_model
+                  value: Jazz
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: BMW
+              - column:
+                  name: v_model
+                  value: E36
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: BMW
+              - column:
+                  name: v_model
+                  value: E53
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Ford
+              - column:
+                  name: v_model
+                  value: Explorer
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Ford
+              - column:
+                  name: v_model
+                  value: Fiesta
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Citroen
+              - column:
+                  name: v_model
+                  value: C4
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Citroen
+              - column:
+                  name: v_model
+                  value: Xsara
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Opel
+              - column:
+                  name: v_model
+                  value: Corsa
+
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+                  value: Opel
+              - column:
+                  name: v_model
+                  value: Vectra
+

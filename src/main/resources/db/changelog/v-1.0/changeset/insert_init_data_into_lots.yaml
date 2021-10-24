@@ -1,0 +1,247 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_users_table
+      author: andrei_delesevich
+      changes:
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Nick')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'Jazz')"
+              - column:
+                  name: l_title
+                  value: Title of selling Honda Jazz
+              - column:
+                  name: l_description
+                  value: Description of selling Honda Jazz
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2010-08-15
+              - column:
+                  name: l_price
+                  valueNumeric: 5000
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Jack')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'Fiesta')"
+              - column:
+                  name: l_title
+                  value: Title of selling Ford Fiesta
+              - column:
+                  name: l_description
+                  value: Description of selling Ford Fiesta
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2006-02-21
+              - column:
+                  name: l_price
+                  valueNumeric: 2700
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Sophie')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'C4')"
+              - column:
+                  name: l_title
+                  value: Title of selling Citroen C4
+              - column:
+                  name: l_description
+                  value: Description of selling Citroen C4
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2014-06-02
+              - column:
+                  name: l_price
+                  valueNumeric: 6852
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Mike')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'C4')"
+              - column:
+                  name: l_title
+                  value: Title of selling Citroen C4
+              - column:
+                  name: l_description
+                  value: Description of selling Citroen C4
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2013-11-01
+              - column:
+                  name: l_price
+                  valueNumeric: 7500
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Charlie')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'E36')"
+              - column:
+                  name: l_title
+                  value: Title of selling BMW E36
+              - column:
+                  name: l_description
+                  value: Description of selling BMW E36
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2017-05-01
+              - column:
+                  name: l_price
+                  valueNumeric: 11000
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Charlie')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'E53')"
+              - column:
+                  name: l_title
+                  value: Title of selling BMW E53
+              - column:
+                  name: l_description
+                  value: Description of selling BMW E53
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2018-09-15
+              - column:
+                  name: l_price
+                  valueNumeric: 15000
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Emily')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'Accord')"
+              - column:
+                  name: l_title
+                  value: Title of selling Honda Accord
+              - column:
+                  name: l_description
+                  value: Description of selling Honda Accord
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2001-01-15
+              - column:
+                  name: l_price
+                  valueNumeric: 3500
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Julie')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'Explorer')"
+              - column:
+                  name: l_title
+                  value: Title of selling Ford Explorer
+              - column:
+                  name: l_description
+                  value: Description of selling Ford Explorer
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2005-09-15
+              - column:
+                  name: l_price
+                  valueNumeric: 8500
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Brandon')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'Fiesta')"
+              - column:
+                  name: l_title
+                  value: Title of selling Ford Fiesta
+              - column:
+                  name: l_description
+                  value: Description of selling Ford Fiesta
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2014-08-15
+              - column:
+                  name: l_price
+                  valueNumeric: 7000
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Marie')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'Corsa')"
+              - column:
+                  name: l_title
+                  value: Title of selling Opel Corsa
+              - column:
+                  name: l_description
+                  value: Description of selling Opel Corsa
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2011-03-15
+              - column:
+                  name: l_price
+                  valueNumeric: 4500
+
+        - insert:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_seller_id
+                  valueComputed: "(select u_id from users where u_login = 'Cristoph')"
+              - column:
+                  name: l_vehicle_id
+                  valueComputed: "(select v_id from vehicles where v_model = 'E36')"
+              - column:
+                  name: l_title
+                  value: Title of selling BMW E36
+              - column:
+                  name: l_description
+                  value: Description of selling BMW E36
+              - column:
+                  name: l_manufacture_date
+                  valueDate: 2011-12-15
+              - column:
+                  name: l_price
+                  valueNumeric: 6800
+

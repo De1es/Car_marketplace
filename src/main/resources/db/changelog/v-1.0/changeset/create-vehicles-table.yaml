@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_book_table
+      author: andrei_delesevich
+      changes:
+        - createTable:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+
+              - column:
+                  name: v_make
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: v_model
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            indexName: v_make_and_model_idx
+            tableName: vehicles
+            columns:
+              - column:
+                  name: v_make
+
+              - column:
+                  name: v_model
+
+      rollback:
+        - dropTable:
+            tableName: vehicles
+            cascadeConstraints: true

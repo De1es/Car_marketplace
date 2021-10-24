@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_users_table
+      author: andrei_delesevich
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: u_id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+
+              - column:
+                  name: u_login
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+              - column:
+                  name: u_password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: u_role
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            indexName: u_login_idx
+            tableName: users
+            column:
+              name: u_login
+
+      rollback:
+        - dropTable:
+            tableName: users
+            cascadeConstraints: true
+

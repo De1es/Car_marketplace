@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: db_init
+      author: andrei_delesevich
+
+  - include:
+      file: db/changelog/v-1.0/db.changelog-v-1.0.yaml
+
+  - changeSet:
+      id: v-1.0
+      author: andrei_delesevich
+

@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/v-1.0/changeset/create-users-table.yaml
+
+  - include:
+      file: db/changelog/v-1.0/changeset/create-vehicles-table.yaml
+
+  - include:
+      file: db/changelog/v-1.0/changeset/create_lots_table.yaml
+
+  - include:
+      file: db/changelog/v-1.0/changeset/insert_init_data_into_users.yaml
+
+  - include:
+      file: db/changelog/v-1.0/changeset/insert_init_data_into_vehicles.yaml
+
+  - include:
+      file: db/changelog/v-1.0/changeset/insert_init_data_into_lots.yaml
+

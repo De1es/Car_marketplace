@@ -1,0 +1,136 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_users_table
+      author: andrei_delesevich
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Nick
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Jack
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Mike
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Emily
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Marie
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Brandon
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Julie
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Sophie
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Cristoph
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Charlie
+              - column:
+                  name: u_password
+                  value: pass123
+              - column:
+                  name: u_role
+                  value: USER
+
+
