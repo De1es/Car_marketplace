@@ -1,14 +1,15 @@
 package by.delesevich.car_marketplace.service;
 
 import by.delesevich.car_marketplace.entity.Lot;
+import by.delesevich.car_marketplace.entity.LotPage;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface LotService {
   Optional<Lot> findById(Long id);
 
-  List<Lot> findAll();
+  Page<Lot> findAll(LotPage lotPage);
 
   Lot saveOrUpdateLot(Lot Lot);
 

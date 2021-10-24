@@ -1,15 +1,16 @@
 package by.delesevich.car_marketplace.service;
 
 import by.delesevich.car_marketplace.entity.Lot;
+import by.delesevich.car_marketplace.entity.LotPage;
 import by.delesevich.car_marketplace.repository.LotRepository;
 import lombok.Data;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.sql.Timestamp;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,8 +27,10 @@ public class LotServiceImpl implements LotService{
 
   @Override
   @Transactional
-  public List<Lot> findAll() {
-    return lotRepository.findAll();
+  public Page<Lot> findAll(LotPage lotPage) {
+    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
+    Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
+    return lotRepository.findAll(pageable);
   }
 
   @Override
