@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_date_of_delete_field_into_users_table
+      author: andrei_delesevich
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: u_date_of_delete
+                  type: timestamp
+      rollback:
+        - dropColumn:
+            tableName: users
+            columnName: u_date_of_delete
