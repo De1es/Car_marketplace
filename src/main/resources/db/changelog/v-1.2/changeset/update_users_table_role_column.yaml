@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: update_role_column_in_users_table
+      author: andrei_delesevich
+      changes:
+        - dropNotNullConstraint:
+            tableName: users
+            columnName: u_role
+
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: u_role
+                  defaultValueNumeric: 1
+                  valueNumeric: 1
+
+        - modifyDataType:
+            tableName: users
+            columnName: u_role
+            newDataType: bigint
+
+
+        - addForeignKeyConstraint:
+            constraintName: fk_u_roles_id
+            baseTableName: users
+            baseColumnNames: u_role
+            referencedTableName: user_roles
+            referencedColumnNames: r_id
+
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: u_password
+                  value: $2a$12$XGz4esPAKB.2dexBdLLafuYBRv5NKWWDFCGTNSNbpRs3ltM/yaVvi
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: u_login
+                  value: Admin
+              - column:
+                  name: u_password
+                  value: $2a$12$Bnem1vgeMoa0.S1d8A9awu0GfukUyUVWI1gQQwtyRMpVgAXWH7uiS
+              - column:
+                  name: u_role
+                  valueNumeric: 2
+
+
+
+
+

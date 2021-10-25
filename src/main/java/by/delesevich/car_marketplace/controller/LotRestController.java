@@ -18,9 +18,10 @@ public class LotRestController {
 
   private final LotService lotService;
 
+
   @GetMapping("/")
-  public ResponseEntity <Page<Lot>> findAllLots(LotPage lotPage) {
-    return new ResponseEntity<>(lotService.findAll(lotPage), HttpStatus.OK);
+  public ResponseEntity<Page<Lot>> findLots(LotPage lotPage) {
+    return new ResponseEntity<>(lotService.findAllNotDeleted(lotPage), HttpStatus.OK);
   }
 
   @PostMapping("/")
@@ -34,7 +35,7 @@ public class LotRestController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Long> deleteLot(@PathVariable Long id){
+  public ResponseEntity<Long> deleteLot(@PathVariable Long id) {
     lotService.softDelete(id);
     return new ResponseEntity<>(id, HttpStatus.OK);
   }

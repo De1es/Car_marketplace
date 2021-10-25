@@ -11,6 +11,8 @@ public interface LotService {
 
   Page<Lot> findAll(LotPage lotPage);
 
+  Page<Lot> findAllNotDeleted(LotPage lotPage);
+
   Lot saveOrUpdateLot(Lot Lot);
 
   void softDelete(Long id);

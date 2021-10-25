@@ -17,3 +17,9 @@ databaseChangeLog:
       id: v-1.1
       author: andrei_delesevich
 
+  - include:
+      file: db/changelog/v-1.2/db.changelog-v-1.2.yaml
+
+  - changeSet:
+      id: v-1.2
+      author: andrei_delesevich
