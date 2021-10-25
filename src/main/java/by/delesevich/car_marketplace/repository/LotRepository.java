@@ -11,6 +11,6 @@ public interface LotRepository extends JpaRepository <Lot, Long> {
 
   @Modifying
   @Query("update Lot set dateOfSale = current_timestamp where id = :id")
-  void delete (Long id);
+  void softDelete(Long id);
 
 }

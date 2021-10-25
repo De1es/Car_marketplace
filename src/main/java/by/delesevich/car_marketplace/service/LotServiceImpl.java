@@ -21,8 +21,12 @@ public class LotServiceImpl implements LotService{
 
   @Override
   @Transactional
-  public Optional<Lot> findById(Long id) {
-    return lotRepository.findById(id);
+  public Lot findById(Long id) {
+    Optional<Lot> optional = lotRepository.findById(id);
+    if (optional.isEmpty()){
+      throw new IllegalArgumentException("Lot with the given id was not found");
+    }
+    return optional.get();
   }
 
   @Override
@@ -41,7 +45,8 @@ public class LotServiceImpl implements LotService{
 
   @Override
   @Transactional
-  public void delete(Long id){
-    lotRepository.delete(id);
+  public void softDelete(Long id){
+    findById(id);
+    lotRepository.softDelete(id);
   }
 }
