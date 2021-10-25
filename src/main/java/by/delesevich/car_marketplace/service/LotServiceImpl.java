@@ -4,10 +4,7 @@ import by.delesevich.car_marketplace.entity.Lot;
 import by.delesevich.car_marketplace.entity.LotPage;
 import by.delesevich.car_marketplace.repository.LotRepository;
 import lombok.Data;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -39,6 +36,14 @@ public class LotServiceImpl implements LotService{
 
   @Override
   @Transactional
+  public Page<Lot> findAllNotDeleted(LotPage lotPage) {
+    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
+    Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
+    return lotRepository.findAllNotDeleted(pageable);
+  }
+
+  @Override
+  @Transactional
   public Lot saveOrUpdateLot(Lot lot) {
     return lotRepository.save(lot);
   }
@@ -49,4 +54,5 @@ public class LotServiceImpl implements LotService{
     findById(id);
     lotRepository.softDelete(id);
   }
+
 }
