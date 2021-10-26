@@ -23,3 +23,10 @@ databaseChangeLog:
   - changeSet:
       id: v-1.2
       author: andrei_delesevich
+
+  - include:
+      file: db/changelog/v-1.3/db.changelog-v-1.3.yaml
+
+  - changeSet:
+      id: v-1.3
+      author: andrei_delesevich

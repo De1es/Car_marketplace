@@ -47,6 +47,13 @@ public class User implements UserDetails {
     this.id = id;
   }
 
+  public User(Long id, String login, Role role, Timestamp dateOfDelete) {
+    this.id = id;
+    this.login = login;
+    this.role = role;
+    this.dateOfDelete = dateOfDelete;
+  }
+
   @Override
   public String getUsername() {
     return login;

@@ -1,19 +1,21 @@
 package by.delesevich.car_marketplace.service;
 
+import by.delesevich.car_marketplace.dto.UserDtoForAdmin;
 import by.delesevich.car_marketplace.entity.user.Role;
 import by.delesevich.car_marketplace.entity.user.User;
 import by.delesevich.car_marketplace.entity.user.UserPage;
 import by.delesevich.car_marketplace.repository.UserRepository;
 import lombok.Data;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Data
@@ -23,10 +25,26 @@ public class UserServiceImpl implements UserService, UserDetailsService {
   private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
   @Override
-  public Page<User> findAll(UserPage userPage) {
+  public User findById(Long id) {
+    Optional<User> optional = userRepository.findById(id);
+    if (optional.isEmpty()){
+      throw new IllegalArgumentException("User with the given id was not found");
+    }
+    return optional.get();
+
+  }
+
+  @Override
+  public Page<UserDtoForAdmin> findAll(UserPage userPage) {
     Sort sort = Sort.by(userPage.getSortDirection(), userPage.getSortBy());
     Pageable pageable = PageRequest.of(userPage.getPageNumber(), userPage.getPageSize(), sort);
-    return userRepository.findAll(pageable);
+    Page <User> page = userRepository.findAll(pageable);
+    List<UserDtoForAdmin> list =
+        page.getContent()
+            .stream()
+            .map(UserDtoForAdmin::new)
+            .collect(Collectors.toList());
+    return new PageImpl<>(list, pageable, page.getTotalElements());
   }
 
   @Override

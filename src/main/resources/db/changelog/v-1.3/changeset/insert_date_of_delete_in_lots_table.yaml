@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert_date_of_delete_in_lots_table
+      author: andrei_delesevich
+      changes:
+        - update:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_date_of_sale
+                  valueDate: 2020-11-12 12:00:05
+            where: l_id = 3
+
+        - update:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_date_of_sale
+                  valueDate: 2019-06-12 05:00:00
+            where: l_id = 6
+
+        - update:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_date_of_sale
+                  valueDate: 2021-04-01 12:00:05
+            where: l_id = 7
+
+        - update:
+            tableName: lots
+            columns:
+              - column:
+                  name: l_date_of_sale
+                  valueDate: 2021-02-05 12:00:05
+            where: l_id = 9
+
+
+

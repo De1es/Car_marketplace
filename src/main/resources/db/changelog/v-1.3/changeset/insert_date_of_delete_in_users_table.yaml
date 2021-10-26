@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert_date_of_delete_in_users_table
+      author: andrei_delesevich
+      changes:
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: u_date_of_delete
+                  valueDate: 2020-11-12 12:00:05
+            where: u_login = 'Cristoph'
+
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: u_date_of_delete
+                  valueDate: 2019-06-12 05:00:00
+            where: u_login = 'Mike'
+
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: u_date_of_delete
+                  valueDate: 2021-04-01 12:00:05
+            where: u_login = 'Brandon'
+
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: u_date_of_delete
+                  valueDate: 2021-02-05 12:00:05
+            where: u_login = 'Julie'
+
+
+

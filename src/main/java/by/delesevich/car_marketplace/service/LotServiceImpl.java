@@ -1,5 +1,6 @@
 package by.delesevich.car_marketplace.service;
 
+import by.delesevich.car_marketplace.dto.LotDtoForAdmin;
 import by.delesevich.car_marketplace.dto.LotDtoForUsers;
 import by.delesevich.car_marketplace.entity.lot.Lot;
 import by.delesevich.car_marketplace.entity.lot.LotPage;
@@ -38,17 +39,23 @@ public class LotServiceImpl implements LotService{
     List<LotDtoForUsers> list =
         page.getContent()
             .stream()
-            .map(LotDtoForUsers :: of)
+            .map(LotDtoForUsers::new)
             .collect(Collectors.toList());
     return new PageImpl<>(list, pageable, page.getTotalElements());
   }
 
   @Override
   @Transactional
-  public Page<Lot> findAll(LotPage lotPage) {
+  public Page<LotDtoForAdmin> findAll(LotPage lotPage) {
     Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
     Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
-    return lotRepository.findAll(pageable);
+    Page <Lot> page = lotRepository.findAll(pageable);
+    List<LotDtoForAdmin> list =
+        page.getContent()
+            .stream()
+            .map(LotDtoForAdmin::new)
+            .collect(Collectors.toList());
+    return new PageImpl<>(list, pageable, page.getTotalElements());
   }
 
   @Override

@@ -28,12 +28,12 @@ public class LotRestController {
   @PostMapping("/")
   public ResponseEntity<LotDtoForUsers> createOrUpdateLot(@RequestBody @Valid LotDtoForUsers dto) {
     Lot lot = lotService.saveOrUpdateLot(dto.toLot());
-    return new ResponseEntity<>(LotDtoForUsers.of(lot), HttpStatus.OK);
+    return new ResponseEntity<>(new LotDtoForUsers(lot), HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<LotDtoForUsers> findLotById(@PathVariable Long id) {
-    return new ResponseEntity<>(LotDtoForUsers.of(lotService.findById(id)), HttpStatus.OK);
+    return new ResponseEntity<>(new LotDtoForUsers(lotService.findById(id)), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
