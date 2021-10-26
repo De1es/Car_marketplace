@@ -38,7 +38,6 @@ public class LotRestController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Long> deleteLot(@PathVariable Long id) {
-    lotService.softDelete(id);
-    return new ResponseEntity<>(id, HttpStatus.OK);
+    return new ResponseEntity<>(lotService.softDelete(id), HttpStatus.OK);
   }
 }

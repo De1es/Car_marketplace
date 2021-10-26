@@ -15,7 +15,7 @@ public interface LotService {
 
   Lot saveOrUpdateLot(Lot Lot);
 
-  void softDelete(Long id);
+  Long softDelete(Long id);
 
 
 }
