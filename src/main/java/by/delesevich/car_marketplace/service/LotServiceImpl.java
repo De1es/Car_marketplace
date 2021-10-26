@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Data
-public class LotServiceImpl implements LotService{
+public class LotServiceImpl implements LotService {
 
   private final LotRepository lotRepository;
 
@@ -24,7 +24,7 @@ public class LotServiceImpl implements LotService{
   @Transactional
   public Lot findById(Long id) {
     Optional<Lot> optional = lotRepository.findById(id);
-    if (optional.isEmpty()){
+    if (optional.isEmpty()) {
       throw new IllegalArgumentException("Lot with the given id was not found");
     }
     return optional.get();
@@ -35,7 +35,7 @@ public class LotServiceImpl implements LotService{
   public Page<LotDtoForUsers> findAllNotDeleted(LotPage lotPage) {
     Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
     Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
-    Page <Lot> page = lotRepository.findAllNotDeleted(pageable);
+    Page<Lot> page = lotRepository.findAllNotDeleted(pageable);
     List<LotDtoForUsers> list =
         page.getContent()
             .stream()
@@ -49,7 +49,7 @@ public class LotServiceImpl implements LotService{
   public Page<LotDtoForAdmin> findAll(LotPage lotPage) {
     Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
     Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
-    Page <Lot> page = lotRepository.findAll(pageable);
+    Page<Lot> page = lotRepository.findAll(pageable);
     List<LotDtoForAdmin> list =
         page.getContent()
             .stream()
@@ -66,9 +66,13 @@ public class LotServiceImpl implements LotService{
 
   @Override
   @Transactional
-  public void softDelete(Long id){
-    findById(id);
+  public Long softDelete(Long id) {
+    Optional<Lot> optional = lotRepository.findById(id);
+    if (optional.isEmpty()) {
+      throw new IllegalArgumentException("Lot with the given id was not found");
+    }
     lotRepository.softDelete(id);
+    return id;
   }
 
 }
