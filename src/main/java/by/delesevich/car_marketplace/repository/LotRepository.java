@@ -1,7 +1,6 @@
 package by.delesevich.car_marketplace.repository;
 
-import by.delesevich.car_marketplace.entity.Lot;
-import by.delesevich.car_marketplace.entity.LotPage;
+import by.delesevich.car_marketplace.entity.lot.Lot;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

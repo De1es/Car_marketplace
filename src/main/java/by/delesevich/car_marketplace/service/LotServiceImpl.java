@@ -1,14 +1,17 @@
 package by.delesevich.car_marketplace.service;
 
-import by.delesevich.car_marketplace.entity.Lot;
-import by.delesevich.car_marketplace.entity.LotPage;
+import by.delesevich.car_marketplace.dto.LotDtoForUsers;
+import by.delesevich.car_marketplace.entity.lot.Lot;
+import by.delesevich.car_marketplace.entity.lot.LotPage;
 import by.delesevich.car_marketplace.repository.LotRepository;
 import lombok.Data;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Data
@@ -28,18 +31,24 @@ public class LotServiceImpl implements LotService{
 
   @Override
   @Transactional
-  public Page<Lot> findAll(LotPage lotPage) {
+  public Page<LotDtoForUsers> findAllNotDeleted(LotPage lotPage) {
     Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
     Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
-    return lotRepository.findAll(pageable);
+    Page <Lot> page = lotRepository.findAllNotDeleted(pageable);
+    List<LotDtoForUsers> list =
+        page.getContent()
+            .stream()
+            .map(LotDtoForUsers :: of)
+            .collect(Collectors.toList());
+    return new PageImpl<>(list, pageable, page.getTotalElements());
   }
 
   @Override
   @Transactional
-  public Page<Lot> findAllNotDeleted(LotPage lotPage) {
+  public Page<Lot> findAll(LotPage lotPage) {
     Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
     Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
-    return lotRepository.findAllNotDeleted(pageable);
+    return lotRepository.findAll(pageable);
   }
 
   @Override

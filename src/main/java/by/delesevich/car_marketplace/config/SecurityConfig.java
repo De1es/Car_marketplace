@@ -20,14 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-        .antMatchers("/admin/**").hasRole("ADMIN")
+        .antMatchers("/api/admin/**").hasRole("ADMIN")
         .antMatchers("api/lots/**").hasRole("USER")
-        .antMatchers("/swagger-ui/**").permitAll()
+        .antMatchers("/swagger-ui/**", "/").permitAll()
         .anyRequest().authenticated()
         .and()
         //Настройка для входа в систему
         .formLogin()
-        .defaultSuccessUrl("/api/lots");
+        .defaultSuccessUrl("/api/lots/");
     http.csrf().disable();
   }
 

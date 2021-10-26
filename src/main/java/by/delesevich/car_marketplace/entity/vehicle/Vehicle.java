@@ -1,12 +1,16 @@
-package by.delesevich.car_marketplace.entity;
+package by.delesevich.car_marketplace.entity.vehicle;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "vehicles")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Vehicle {
 
   @Id
@@ -20,4 +24,7 @@ public class Vehicle {
   @Column(name = "v_model")
   private String model;
 
+  public Vehicle(Long id) {
+    this.id = id;
+  }
 }

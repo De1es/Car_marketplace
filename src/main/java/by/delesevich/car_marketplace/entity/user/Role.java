@@ -1,4 +1,4 @@
-package by.delesevich.car_marketplace.entity;
+package by.delesevich.car_marketplace.entity.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

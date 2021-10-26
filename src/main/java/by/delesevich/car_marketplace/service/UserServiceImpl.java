@@ -1,8 +1,8 @@
 package by.delesevich.car_marketplace.service;
 
-import by.delesevich.car_marketplace.entity.Role;
-import by.delesevich.car_marketplace.entity.User;
-import by.delesevich.car_marketplace.entity.UserPage;
+import by.delesevich.car_marketplace.entity.user.Role;
+import by.delesevich.car_marketplace.entity.user.User;
+import by.delesevich.car_marketplace.entity.user.UserPage;
 import by.delesevich.car_marketplace.repository.UserRepository;
 import lombok.Data;
 import org.springframework.data.domain.Page;

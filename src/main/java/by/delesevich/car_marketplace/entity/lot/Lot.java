@@ -1,8 +1,10 @@
-package by.delesevich.car_marketplace.entity;
+package by.delesevich.car_marketplace.entity.lot;
 
-import liquibase.pro.packaged.C;
+import by.delesevich.car_marketplace.entity.user.User;
+import by.delesevich.car_marketplace.entity.vehicle.Vehicle;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.hibernate.annotations.Cascade;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Past;
@@ -13,6 +15,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "lots")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Lot {
 
   @Id

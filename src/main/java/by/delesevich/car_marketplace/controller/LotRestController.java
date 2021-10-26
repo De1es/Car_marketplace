@@ -1,7 +1,8 @@
 package by.delesevich.car_marketplace.controller;
 
-import by.delesevich.car_marketplace.entity.Lot;
-import by.delesevich.car_marketplace.entity.LotPage;
+import by.delesevich.car_marketplace.dto.LotDtoForUsers;
+import by.delesevich.car_marketplace.entity.lot.Lot;
+import by.delesevich.car_marketplace.entity.lot.LotPage;
 import by.delesevich.car_marketplace.service.LotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,18 +21,19 @@ public class LotRestController {
 
 
   @GetMapping("/")
-  public ResponseEntity<Page<Lot>> findLots(LotPage lotPage) {
+  public ResponseEntity<Page<LotDtoForUsers>> findLots(LotPage lotPage) {
     return new ResponseEntity<>(lotService.findAllNotDeleted(lotPage), HttpStatus.OK);
   }
 
   @PostMapping("/")
-  public ResponseEntity<Lot> createOrUpdateLot(@RequestBody @Valid Lot lot) {
-    return new ResponseEntity<>(lotService.saveOrUpdateLot(lot), HttpStatus.OK);
+  public ResponseEntity<LotDtoForUsers> createOrUpdateLot(@RequestBody @Valid LotDtoForUsers dto) {
+    Lot lot = lotService.saveOrUpdateLot(dto.toLot());
+    return new ResponseEntity<>(LotDtoForUsers.of(lot), HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Lot> findLotById(@PathVariable Long id) {
-    return new ResponseEntity<>(lotService.findById(id), HttpStatus.OK);
+  public ResponseEntity<LotDtoForUsers> findLotById(@PathVariable Long id) {
+    return new ResponseEntity<>(LotDtoForUsers.of(lotService.findById(id)), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")

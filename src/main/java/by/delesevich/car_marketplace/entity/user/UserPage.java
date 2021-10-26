@@ -1,12 +1,12 @@
-package by.delesevich.car_marketplace.entity;
+package by.delesevich.car_marketplace.entity.user;
 
 import lombok.Data;
 import org.springframework.data.domain.Sort;
 
 @Data
-public class LotPage {
+public class UserPage {
   private int pageNumber = 0;
   private int pageSize = 5;
   private Sort.Direction sortDirection = Sort.Direction.ASC;
-  private String sortBy = "price";
+  private String sortBy = "id";
 }

@@ -1,13 +1,12 @@
-package by.delesevich.car_marketplace.entity;
+package by.delesevich.car_marketplace.entity.user;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonView;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.swing.text.View;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +14,8 @@ import java.util.Collection;
 @Entity
 @Table(name = "users")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements UserDetails {
 
   @Id
@@ -40,6 +41,10 @@ public class User implements UserDetails {
     Collection<GrantedAuthority> collection = new ArrayList<>();
     collection.add(role);
     return collection;
+  }
+
+  public User(Long id) {
+    this.id = id;
   }
 
   @Override

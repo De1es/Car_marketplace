@@ -1,9 +1,9 @@
 package by.delesevich.car_marketplace.controller;
 
-import by.delesevich.car_marketplace.entity.Lot;
-import by.delesevich.car_marketplace.entity.LotPage;
-import by.delesevich.car_marketplace.entity.User;
-import by.delesevich.car_marketplace.entity.UserPage;
+import by.delesevich.car_marketplace.entity.lot.Lot;
+import by.delesevich.car_marketplace.entity.lot.LotPage;
+import by.delesevich.car_marketplace.entity.user.User;
+import by.delesevich.car_marketplace.entity.user.UserPage;
 import by.delesevich.car_marketplace.service.LotService;
 import by.delesevich.car_marketplace.service.UserService;
 import lombok.RequiredArgsConstructor;
