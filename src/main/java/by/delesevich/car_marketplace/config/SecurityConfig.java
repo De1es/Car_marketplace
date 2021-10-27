@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Bean
-  public BCryptPasswordEncoder bCryptPasswordEncoder () {
+  public BCryptPasswordEncoder bCryptPasswordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
@@ -21,13 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
         .antMatchers("/api/admin/**").hasRole("ADMIN")
-        .antMatchers("api/lots/**").hasRole("USER")
+        .antMatchers("/api/lots/**").hasRole("USER")
         .antMatchers("/swagger-ui/**", "/").permitAll()
-        .anyRequest().authenticated()
         .and()
-        //Настройка для входа в систему
-        .formLogin()
-        .defaultSuccessUrl("/api/lots/");
+        .httpBasic();
     http.csrf().disable();
   }
 

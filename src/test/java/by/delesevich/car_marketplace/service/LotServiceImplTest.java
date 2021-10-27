@@ -67,7 +67,7 @@ class LotServiceImplTest {
     listOfLot2.add(lot3);
     listOfLot2.add(lot4);
     pageOfLot2 = new PageImpl<>(listOfLot2);
-    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
+    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy().toString());
     pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
     List<LotDtoForUsers> listForUsers =
         pageOfLot1.getContent()

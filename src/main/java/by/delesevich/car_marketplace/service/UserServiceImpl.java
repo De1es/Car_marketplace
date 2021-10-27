@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
   @Override
   public Page<UserDtoForAdmin> findAll(UserPage userPage) {
-    Sort sort = Sort.by(userPage.getSortDirection(), userPage.getSortBy());
+    Sort sort = Sort.by(userPage.getSortDirection(), userPage.getSortBy().toString());
     Pageable pageable = PageRequest.of(userPage.getPageNumber(), userPage.getPageSize(), sort);
     Page <User> page = userRepository.findAll(pageable);
     List<UserDtoForAdmin> list =
@@ -53,10 +53,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     if (userFromBd != null){
       return false;
     }
-
     user.setRole(new Role("ROLE_USER"));
     user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-    System.out.println(bCryptPasswordEncoder.encode(user.getPassword()));
     userRepository.save(user);
     return true;
   }

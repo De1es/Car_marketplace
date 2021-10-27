@@ -33,7 +33,7 @@ public class LotServiceImpl implements LotService {
   @Override
   @Transactional
   public Page<LotDtoForUsers> findAllNotDeleted(LotPage lotPage) {
-    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
+    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy().toString());
     Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
     Page<Lot> page = lotRepository.findAllNotDeleted(pageable);
     List<LotDtoForUsers> list =
@@ -47,7 +47,7 @@ public class LotServiceImpl implements LotService {
   @Override
   @Transactional
   public Page<LotDtoForAdmin> findAll(LotPage lotPage) {
-    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy());
+    Sort sort = Sort.by(lotPage.getSortDirection(), lotPage.getSortBy().toString());
     Pageable pageable = PageRequest.of(lotPage.getPageNumber(), lotPage.getPageSize(), sort);
     Page<Lot> page = lotRepository.findAll(pageable);
     List<LotDtoForAdmin> list =
